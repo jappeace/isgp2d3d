@@ -11,15 +11,17 @@ using Microsoft.Xna.Framework.Media;
 
 namespace One.Three.RectsAndPixels {
 	/// <summary>
-	/// This is the main type for your game
+	/// The thing that make the game tik
 	/// </summary>
-	public class Game1 : Microsoft.Xna.Framework.Game {
+	public class GameController : Microsoft.Xna.Framework.Game {
 		GraphicsDeviceManager graphics;
-		SpriteBatch spriteBatch;
+		BasicEffect effect;
+		private Engine engine;
 
-		public Game1() {
+		public GameController() {
 			graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
+			engine = new Engine();
 		}
 
 		/// <summary>
@@ -29,8 +31,8 @@ namespace One.Three.RectsAndPixels {
 		/// and initialize them as well.
 		/// </summary>
 		protected override void Initialize() {
-			// TODO: Add your initialization logic here
 
+			effect = new BasicEffect(GraphicsDevice);
 			base.Initialize();
 		}
 
@@ -38,20 +40,13 @@ namespace One.Three.RectsAndPixels {
 		/// LoadContent will be called once per game and is the place to load
 		/// all of your content.
 		/// </summary>
-		protected override void LoadContent() {
-			// Create a new SpriteBatch, which can be used to draw textures.
-			spriteBatch = new SpriteBatch(GraphicsDevice);
-
-			// TODO: use this.Content to load your game content here
-		}
+		protected override void LoadContent() {}
 
 		/// <summary>
 		/// UnloadContent will be called once per game and is the place to unload
 		/// all content.
 		/// </summary>
-		protected override void UnloadContent() {
-			// TODO: Unload any non ContentManager content here
-		}
+		protected override void UnloadContent() {}
 
 		/// <summary>
 		/// Allows the game to run logic such as updating the world,
@@ -60,8 +55,9 @@ namespace One.Three.RectsAndPixels {
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Update(GameTime gameTime) {
 			// Allows the game to exit
-			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+			if (Keyboard.GetState().IsKeyDown(Keys.Escape)){
 				this.Exit();
+			}
 
 			// TODO: Add your update logic here
 
@@ -75,9 +71,34 @@ namespace One.Three.RectsAndPixels {
 		protected override void Draw(GameTime gameTime) {
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 
-			// TODO: Add your drawing code here
+			BeginPaint();
+			// let the engine draw (I wanted to call it graphics and call this class engine)
+			GraphicsDevice.SetVertexBuffer(engine.CreateVertexBuffer(GraphicsDevice));
+			EndPaint();
 
 			base.Draw(gameTime);
+		}
+
+		private void EndPaint(){
+			effect.CurrentTechnique.Passes[0].Apply();
+			GraphicsDevice.DrawPrimitives(PrimitiveType.TriangleList, 0, engine.PrimitiveCount);
+		}
+
+		private void BeginPaint(){
+			
+			effect.VertexColorEnabled = true;
+			effect.World = Matrix.Identity;
+			effect.View = new Matrix(
+				1.0f, 0.0f, 0.0f, 0.0f,
+				0.0f, 1.0f, 0.0f, 0.0f,
+				0.0f, 0.0f, -1.0f, 0.0f,
+				0.0f, 0.0f, 0.0f, 1.0f
+			);
+			effect.Projection = Matrix.CreateOrthographicOffCenter(
+				  0f, Window.ClientBounds.Width,
+				  Window.ClientBounds.Height, 0f,
+				  -10f, 10f
+			);
 		}
 	}
 }
