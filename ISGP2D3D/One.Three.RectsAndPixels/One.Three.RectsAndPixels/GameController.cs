@@ -33,6 +33,7 @@ namespace One.Three.RectsAndPixels {
 		protected override void Initialize() {
 
 			effect = new BasicEffect(GraphicsDevice);
+			engine.Rectangle(new Vector2(100,100), new Vector2(50,50), new Color(255, 0, 0));
 			base.Initialize();
 		}
 
@@ -81,7 +82,7 @@ namespace One.Three.RectsAndPixels {
 
 		private void EndPaint(){
 			effect.CurrentTechnique.Passes[0].Apply();
-			GraphicsDevice.DrawPrimitives(PrimitiveType.TriangleList, 0, engine.PrimitiveCount);
+			GraphicsDevice.DrawPrimitives(PrimitiveType.TriangleStrip, 0, engine.PrimitiveCount);
 		}
 
 		private void BeginPaint(){
