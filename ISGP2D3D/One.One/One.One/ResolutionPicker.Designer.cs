@@ -62,7 +62,6 @@
 			this.Controls.Add(this.selectBtn);
 			this.Name = "ResolutionPicker";
 			this.Text = "Resolutions";
-			this.Load += new System.EventHandler(this.ResolutionPicker_Load);
 			this.ResumeLayout(false);
 
 		}

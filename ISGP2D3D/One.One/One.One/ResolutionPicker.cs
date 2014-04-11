@@ -11,6 +11,9 @@ namespace One.One
 {
 	public partial class ResolutionPicker : Form
 	{
+		/// <summary>
+		/// Collection of all 32bit per pixel resolutions.
+		/// </summary>
 		private ICollection<DisplayMode> PermittedDisplayModes { get; set; }
 
 		public ResolutionPicker()
@@ -20,6 +23,7 @@ namespace One.One
 			// Bgr32 is deprecated. Color seems to be a similar 32byte per pixel format
 			PermittedDisplayModes = GraphicsAdapter.DefaultAdapter.SupportedDisplayModes
 				.Where(dm => dm.Format == SurfaceFormat.Color).ToList();
+
 			resolutionsLv.Columns.Add("Pixeldepth");
 			resolutionsLv.Columns.Add("Width");
 			resolutionsLv.Columns.Add("Height");
@@ -32,10 +36,6 @@ namespace One.One
 				item.SubItems.Add(new ListViewSubItem(item, res.Height.ToString()));
 				resolutionsLv.Items.Add(item);
 			}
-		}
-
-		private void ResolutionPicker_Load(object sender, EventArgs e)
-		{
 		}
 	}
 }
