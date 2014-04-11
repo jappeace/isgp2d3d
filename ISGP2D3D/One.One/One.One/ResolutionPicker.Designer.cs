@@ -28,21 +28,9 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.resolutionsDgv = new System.Windows.Forms.DataGridView();
 			this.selectBtn = new System.Windows.Forms.Button();
-			((System.ComponentModel.ISupportInitialize)(this.resolutionsDgv)).BeginInit();
+			this.resolutionsLv = new System.Windows.Forms.ListView();
 			this.SuspendLayout();
-			// 
-			// resolutionsDgv
-			// 
-			this.resolutionsDgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.resolutionsDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.resolutionsDgv.Location = new System.Drawing.Point(12, 12);
-			this.resolutionsDgv.Name = "resolutionsDgv";
-			this.resolutionsDgv.Size = new System.Drawing.Size(249, 253);
-			this.resolutionsDgv.TabIndex = 0;
 			// 
 			// selectBtn
 			// 
@@ -55,23 +43,33 @@
 			this.selectBtn.Text = "Select";
 			this.selectBtn.UseVisualStyleBackColor = true;
 			// 
+			// resolutionsLv
+			// 
+			this.resolutionsLv.GridLines = true;
+			this.resolutionsLv.Location = new System.Drawing.Point(12, 12);
+			this.resolutionsLv.Name = "resolutionsLv";
+			this.resolutionsLv.Size = new System.Drawing.Size(249, 262);
+			this.resolutionsLv.TabIndex = 2;
+			this.resolutionsLv.UseCompatibleStateImageBehavior = false;
+			this.resolutionsLv.View = System.Windows.Forms.View.Details;
+			// 
 			// ResolutionPicker
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(273, 315);
+			this.Controls.Add(this.resolutionsLv);
 			this.Controls.Add(this.selectBtn);
-			this.Controls.Add(this.resolutionsDgv);
 			this.Name = "ResolutionPicker";
 			this.Text = "Resolutions";
-			((System.ComponentModel.ISupportInitialize)(this.resolutionsDgv)).EndInit();
+			this.Load += new System.EventHandler(this.ResolutionPicker_Load);
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.DataGridView resolutionsDgv;
 		private System.Windows.Forms.Button selectBtn;
+		private System.Windows.Forms.ListView resolutionsLv;
 	}
 }

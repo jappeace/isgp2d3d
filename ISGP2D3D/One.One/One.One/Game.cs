@@ -34,6 +34,8 @@ namespace One.One
 		protected override void Initialize()
 		{
 			// TODO: Add your initialization logic here
+			var picker = new ResolutionPicker();
+			picker.ShowDialog();
 
 			base.Initialize();
 		}
