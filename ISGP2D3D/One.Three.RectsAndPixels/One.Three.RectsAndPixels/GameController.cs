@@ -35,7 +35,10 @@ namespace One.Three.RectsAndPixels {
 			effect = new BasicEffect(GraphicsDevice);
 			engine.Rectangle(new Vector2(100,100), new Vector2(50,50), new Color(255, 0, 0));
 			engine.Rectangle(new Vector2(200,100), new Vector2(50,50), new Color(255, 0, 0));
-			engine.Rectangle(new Vector2(200,200), new Vector2(5,5), new Color(55, 60, 0));
+			engine.Rectangle(new Vector2(200,200), new Vector2(5,5), new Color(55, 255, 0));
+			engine.Rectangle(new Vector2(15,20), new Vector2(300,300), new Color(55, 145, 120), true);
+			engine.Rectangle(new Vector2(80,200), new Vector2(50,50), new Color(55, 80, 255));
+			engine.Rectangle(new Vector2(90,120), new Vector2(30,300), new Color(55, 145, 120), true);
 			base.Initialize();
 		}
 
