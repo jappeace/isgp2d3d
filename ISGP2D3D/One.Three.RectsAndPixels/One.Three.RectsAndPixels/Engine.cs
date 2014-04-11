@@ -38,14 +38,14 @@ namespace One.Three.RectsAndPixels {
 			return vertexBuffer;
 		}
 		public void Rectangle(Vector2 position, Vector2 size, Color color){
-			PrimitiveCount += 2; // need 2 triangles for a rectangle
+			PrimitiveCount += 6; // need 2 triangles for a rectangle
 
 			VertexList.Add(new VertexPositionColor(new Vector3(position, 0), color));
+			VertexList.Add(new VertexPositionColor(new Vector3(position + size, 0), color));
 			VertexList.Add(new VertexPositionColor(new Vector3(position + size * new Vector2(0,1), 0), color));
-			VertexList.Add(new VertexPositionColor(new Vector3(position + size, 0), color));
 			VertexList.Add(new VertexPositionColor(new Vector3(position, 0), color));
-			VertexList.Add(new VertexPositionColor(new Vector3(position + size, 0), color));
 			VertexList.Add(new VertexPositionColor(new Vector3(position + size * new Vector2(1,0), 0), color));
+			VertexList.Add(new VertexPositionColor(new Vector3(position + size, 0), color));
 		}
 	}
 }
