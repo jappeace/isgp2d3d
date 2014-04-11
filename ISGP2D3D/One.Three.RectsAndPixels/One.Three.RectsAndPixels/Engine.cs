@@ -50,7 +50,7 @@ namespace One.Three.RectsAndPixels {
 		}
 
 		public void FillRect(Vector2 position, Vector2 size){
-			PrimitiveCount += 6;
+			PrimitiveCount += 2;
 			VertexList.Add(new VertexPositionColor(new Vector3(position, 0), Color));
 			VertexList.Add(new VertexPositionColor(new Vector3(position + size, 0), Color));
 			VertexList.Add(new VertexPositionColor(new Vector3(position + size * new Vector2(0,1), 0), Color));
@@ -66,6 +66,10 @@ namespace One.Three.RectsAndPixels {
 
 			FillRect(position + size * new Vector2(1,0), size * new Vector2(0,1) + new Vector2(1,0));
 			FillRect(position + size * new Vector2(0,1), size * new Vector2(1,0) + new Vector2(0,1));
+		}
+
+		public void FillPixel(Vector2 position){
+			FillRect(position, new Vector2(1,1));
 		}
 	}
 }

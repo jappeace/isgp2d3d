@@ -22,6 +22,7 @@ namespace One.Three.RectsAndPixels {
 			graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
 			engine = new Engine();
+			IsMouseVisible = true;
 		}
 
 		/// <summary>
@@ -39,6 +40,7 @@ namespace One.Three.RectsAndPixels {
 			engine.Rectangle(new Vector2(15,20), new Vector2(300,300), new Color(55, 145, 120), true);
 			engine.Rectangle(new Vector2(80,200), new Vector2(50,50), new Color(55, 80, 255));
 			engine.Rectangle(new Vector2(90,120), new Vector2(30,300), new Color(55, 145, 120), true);
+			engine.Rectangle(new Vector2(90,120), new Vector2(300,30), new Color(255, 145, 120), true);
 			base.Initialize();
 		}
 
@@ -64,7 +66,9 @@ namespace One.Three.RectsAndPixels {
 			if (Keyboard.GetState().IsKeyDown(Keys.Escape)){
 				this.Exit();
 			}
-
+			if(Mouse.GetState().LeftButton == ButtonState.Pressed){
+				engine.FillPixel(new Vector2(Mouse.GetState().X, Mouse.GetState().Y));
+			}
 			// TODO: Add your update logic here
 
 			base.Update(gameTime);
