@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One.One", "One.One\One.One\One.One.csproj", "{C45DE27A-C4F8-42D3-A04D-C2DB56641034}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One.Three.RectsAndPixels", "One.Three.RectsAndPixels\One.Three.RectsAndPixels\One.Three.RectsAndPixels.csproj", "{16E8036F-2D5D-4626-8E1C-0673B82AA519}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "One.Three.RectsAndPixelsContent", "One.Three.RectsAndPixels\One.Three.RectsAndPixelsContent\One.Three.RectsAndPixelsContent.contentproj", "{67470048-2C18-4754-B95B-80F6E396353F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +17,12 @@ Global
 		{C45DE27A-C4F8-42D3-A04D-C2DB56641034}.Debug|x86.Build.0 = Debug|x86
 		{C45DE27A-C4F8-42D3-A04D-C2DB56641034}.Release|x86.ActiveCfg = Release|x86
 		{C45DE27A-C4F8-42D3-A04D-C2DB56641034}.Release|x86.Build.0 = Release|x86
+		{16E8036F-2D5D-4626-8E1C-0673B82AA519}.Debug|x86.ActiveCfg = Debug|x86
+		{16E8036F-2D5D-4626-8E1C-0673B82AA519}.Debug|x86.Build.0 = Debug|x86
+		{16E8036F-2D5D-4626-8E1C-0673B82AA519}.Release|x86.ActiveCfg = Release|x86
+		{16E8036F-2D5D-4626-8E1C-0673B82AA519}.Release|x86.Build.0 = Release|x86
+		{67470048-2C18-4754-B95B-80F6E396353F}.Debug|x86.ActiveCfg = Debug|x86
+		{67470048-2C18-4754-B95B-80F6E396353F}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
