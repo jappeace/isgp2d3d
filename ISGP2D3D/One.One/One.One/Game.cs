@@ -18,6 +18,8 @@ namespace One.One
 	{
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
+		int DisplayModeCount = GraphicsAdapter.DefaultAdapter.SupportedDisplayModes.Count();
+		int DisplayModeIndex;
 
 		public Game()
 		{
@@ -36,6 +38,9 @@ namespace One.One
 			var picker = new ResolutionPicker();
 			if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 			{
+				DisplayModeIndex = GraphicsAdapter.DefaultAdapter.SupportedDisplayModes.ToList()
+					.IndexOf(picker.SelectedDisplayMode);
+
 				// Bigger mouse means lower resolution. Useful for debugging.
 				IsMouseVisible = true;
 
@@ -86,12 +91,60 @@ namespace One.One
 		protected override void Update(GameTime gameTime)
 		{
 			// Allows the game to exit
-			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+			if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+			{
 				this.Exit();
+			}
 
-			// TODO: Add your update logic here
+			if (Keyboard.GetState().IsKeyDown(Keys.F1))
+			{
+				graphics.IsFullScreen = false;
+			}
+			else if (Keyboard.GetState().IsKeyDown(Keys.F2))
+			{
+				graphics.IsFullScreen = true;
+			}
+
+			if (Keyboard.GetState().IsKeyDown(Keys.Right))
+			{
+				NextDisplayMode();
+			}
+			else if (Keyboard.GetState().IsKeyDown(Keys.Left))
+			{
+				PreviousDisplayMode();
+			}
+
+			graphics.ApplyChanges();
 
 			base.Update(gameTime);
+		}
+
+		private void NextDisplayMode()
+		{
+			if (DisplayModeIndex + 1 < DisplayModeCount)
+			{
+				DisplayModeIndex++;
+			}
+			UpdateDisplayMode();
+		}
+
+		private void PreviousDisplayMode()
+		{
+			if (DisplayModeIndex > 0)
+			{
+				DisplayModeIndex--;
+			}
+			UpdateDisplayMode();
+		}
+
+		private void UpdateDisplayMode()
+		{
+			var displayMode = GraphicsAdapter.DefaultAdapter.SupportedDisplayModes
+				.ElementAt(DisplayModeIndex);
+
+			graphics.PreferredBackBufferFormat = displayMode.Format;
+			graphics.PreferredBackBufferWidth = displayMode.Width;
+			graphics.PreferredBackBufferHeight = displayMode.Height;
 		}
 
 		/// <summary>
