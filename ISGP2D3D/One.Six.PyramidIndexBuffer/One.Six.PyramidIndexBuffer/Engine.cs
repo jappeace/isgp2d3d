@@ -38,15 +38,12 @@ namespace One.Six.PyramidIndexBuffer {
             effect = new BasicEffect(GraphicsDevice);
 
 			Color col = Color.DarkRed;
-			const int MAX = 8;
+			const int MAX = 5;
 			VertexPositionColor[] vertex = new VertexPositionColor[MAX]
 			{
-				new VertexPositionColor( new Vector3(-1,  1, -1), col),
-				new VertexPositionColor( new Vector3( 1,  1, -1), col),
+				new VertexPositionColor( new Vector3(0,  1, 0), col),
 				new VertexPositionColor( new Vector3(-1, -1, -1), col),
 				new VertexPositionColor( new Vector3( 1, -1, -1), col),
-				new VertexPositionColor( new Vector3(-1,  1,  1), col),
-				new VertexPositionColor( new Vector3( 1,  1,  1), col),
 				new VertexPositionColor( new Vector3( 1, -1,  1), col),
 				new VertexPositionColor( new Vector3(-1, -1,  1), col)
 			};
@@ -54,20 +51,14 @@ namespace One.Six.PyramidIndexBuffer {
 			vb = new VertexBuffer(GraphicsDevice, typeof(VertexPositionColor), MAX, BufferUsage.None);
 			vb.SetData<VertexPositionColor>(vertex);
 
-			short[] index = new short[36] 
+			short[] index = new short[18] 
 			{ 
-				0,1,5,  // 1
-				0,5,4,  // 2
-				0,2,1,  // 3
-				1,2,3,  // 4
-				0,4,2,  // 5
-				4,7,2,  // 6
-				2,7,3,  // 7
-				3,7,6,  // 8
-				4,5,6,  // 9
-				4,6,7,  //10
-				1,6,5,  //11
-				1,3,6   //12
+				0,1,2,  // 4
+				0,4,1,  // 3
+				1,4,2,  // 4
+				2,4,3,  // 8
+				0,3,4,  //10
+				0,2,3   //12
 			};
 
 			ib = new IndexBuffer(GraphicsDevice, typeof(short), 36 /*3 x 12*/, BufferUsage.None);
