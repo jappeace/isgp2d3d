@@ -45,6 +45,7 @@
 			// 
 			// resolutionsLv
 			// 
+			this.resolutionsLv.FullRowSelect = true;
 			this.resolutionsLv.GridLines = true;
 			this.resolutionsLv.Location = new System.Drawing.Point(12, 12);
 			this.resolutionsLv.Name = "resolutionsLv";

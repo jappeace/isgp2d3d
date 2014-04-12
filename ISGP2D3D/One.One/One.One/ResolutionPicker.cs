@@ -21,7 +21,8 @@ namespace One.One
 
 			// Bgr32 is deprecated. Color seems to be a similar 32byte per pixel format
 			PermittedDisplayModes = GraphicsAdapter.DefaultAdapter.SupportedDisplayModes
-				.Where(dm => dm.Format == SurfaceFormat.Color).ToList();
+				.Where(dm => dm.Format == SurfaceFormat.Color)
+				.ToList();
 
 			resolutionsLv.Columns.Add("Pixeldepth");
 			resolutionsLv.Columns.Add("Width");
