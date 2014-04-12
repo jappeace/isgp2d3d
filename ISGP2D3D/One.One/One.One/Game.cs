@@ -119,24 +119,35 @@ namespace One.One
 			base.Update(gameTime);
 		}
 
+		/// <summary>
+		/// Switch to the next displaymode. Does nothing if the last displaymode
+		/// is selected.
+		/// </summary>
 		private void NextDisplayMode()
 		{
 			if (DisplayModeIndex + 1 < DisplayModeCount)
 			{
 				DisplayModeIndex++;
+				UpdateDisplayMode();
 			}
-			UpdateDisplayMode();
 		}
 
+		/// <summary>
+		/// Switch to the previous displaymode. Does nothing if the first
+		/// displaymode is selected.
+		/// </summary>
 		private void PreviousDisplayMode()
 		{
 			if (DisplayModeIndex > 0)
 			{
 				DisplayModeIndex--;
+				UpdateDisplayMode();
 			}
-			UpdateDisplayMode();
 		}
 
+		/// <summary>
+		/// Changes the displaymode to the currently selected one.
+		/// </summary>
 		private void UpdateDisplayMode()
 		{
 			var displayMode = GraphicsAdapter.DefaultAdapter.SupportedDisplayModes
@@ -145,6 +156,8 @@ namespace One.One
 			graphics.PreferredBackBufferFormat = displayMode.Format;
 			graphics.PreferredBackBufferWidth = displayMode.Width;
 			graphics.PreferredBackBufferHeight = displayMode.Height;
+
+			graphics.ApplyChanges();
 		}
 
 		/// <summary>
