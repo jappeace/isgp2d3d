@@ -1,9 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One.One", "One.One\One.One\One.One.csproj", "{B6F574ED-8D5A-4411-B0F7-CCD92AFD9229}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One.One", "One.One\One.One\One.One.csproj", "{C45DE27A-C4F8-42D3-A04D-C2DB56641034}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "One.OneContent", "One.One\One.OneContent\One.OneContent.contentproj", "{3DE23192-FCA1-4040-BAB9-12F07F4CBC20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One.Three.RectsAndPixels", "One.Three.RectsAndPixels\One.Three.RectsAndPixels\One.Three.RectsAndPixels.csproj", "{16E8036F-2D5D-4626-8E1C-0673B82AA519}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One.Three.RectsAndPixelsContent", "One.Three.RectsAndPixels\One.Three.RectsAndPixelsContent\One.Three.RectsAndPixelsContent.contentproj", "{67470048-2C18-4754-B95B-80F6E396353F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One.Six.PyramidIndexBuffer", "One.Six.PyramidIndexBuffer\One.Six.PyramidIndexBuffer\One.Six.PyramidIndexBuffer.csproj", "{922E4A0E-B162-42D9-B7FE-F2897B2345CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One.Six.PyramidIndexBufferContent", "One.Six.PyramidIndexBuffer\One.Six.PyramidIndexBufferContent\One.Six.PyramidIndexBufferContent.contentproj", "{C5C09F1A-9E06-472C-AA89-A50890BC5E08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One.OneContent", "One.One\One.OneContent\One.OneContent.contentproj", "{3DE23192-FCA1-4040-BAB9-12F07F4CBC20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +19,22 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B6F574ED-8D5A-4411-B0F7-CCD92AFD9229}.Debug|x86.ActiveCfg = Debug|x86
-		{B6F574ED-8D5A-4411-B0F7-CCD92AFD9229}.Debug|x86.Build.0 = Debug|x86
-		{B6F574ED-8D5A-4411-B0F7-CCD92AFD9229}.Release|x86.ActiveCfg = Release|x86
-		{B6F574ED-8D5A-4411-B0F7-CCD92AFD9229}.Release|x86.Build.0 = Release|x86
+		{C45DE27A-C4F8-42D3-A04D-C2DB56641034}.Debug|x86.ActiveCfg = Debug|x86
+		{C45DE27A-C4F8-42D3-A04D-C2DB56641034}.Debug|x86.Build.0 = Debug|x86
+		{C45DE27A-C4F8-42D3-A04D-C2DB56641034}.Release|x86.ActiveCfg = Release|x86
+		{C45DE27A-C4F8-42D3-A04D-C2DB56641034}.Release|x86.Build.0 = Release|x86
+		{16E8036F-2D5D-4626-8E1C-0673B82AA519}.Debug|x86.ActiveCfg = Debug|x86
+		{16E8036F-2D5D-4626-8E1C-0673B82AA519}.Debug|x86.Build.0 = Debug|x86
+		{16E8036F-2D5D-4626-8E1C-0673B82AA519}.Release|x86.ActiveCfg = Release|x86
+		{16E8036F-2D5D-4626-8E1C-0673B82AA519}.Release|x86.Build.0 = Release|x86
+		{67470048-2C18-4754-B95B-80F6E396353F}.Debug|x86.ActiveCfg = Debug|x86
+		{67470048-2C18-4754-B95B-80F6E396353F}.Release|x86.ActiveCfg = Release|x86
+		{922E4A0E-B162-42D9-B7FE-F2897B2345CA}.Debug|x86.ActiveCfg = Debug|x86
+		{922E4A0E-B162-42D9-B7FE-F2897B2345CA}.Debug|x86.Build.0 = Debug|x86
+		{922E4A0E-B162-42D9-B7FE-F2897B2345CA}.Release|x86.ActiveCfg = Release|x86
+		{922E4A0E-B162-42D9-B7FE-F2897B2345CA}.Release|x86.Build.0 = Release|x86
+		{C5C09F1A-9E06-472C-AA89-A50890BC5E08}.Debug|x86.ActiveCfg = Debug|x86
+		{C5C09F1A-9E06-472C-AA89-A50890BC5E08}.Release|x86.ActiveCfg = Release|x86
 		{3DE23192-FCA1-4040-BAB9-12F07F4CBC20}.Debug|x86.ActiveCfg = Debug|x86
 		{3DE23192-FCA1-4040-BAB9-12F07F4CBC20}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
