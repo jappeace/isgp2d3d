@@ -14,7 +14,7 @@ namespace One.One
 		/// Collection of all 32bit per pixel resolutions.
 		/// </summary>
 		private ICollection<DisplayMode> PermittedDisplayModes { get; set; }
-		private DisplayMode SelectedDisplayMode { get; set; }
+		public DisplayMode SelectedDisplayMode { get; set; }
 
 		public ResolutionPicker()
 		{
@@ -50,6 +50,11 @@ namespace One.One
 			{
 				SelectedDisplayMode = null;
 			}
+		}
+
+		private void selectBtn_Click(object sender, EventArgs e)
+		{
+			Close();
 		}
 	}
 }

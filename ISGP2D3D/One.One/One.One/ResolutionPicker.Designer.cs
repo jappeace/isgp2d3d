@@ -42,6 +42,7 @@
 			this.selectBtn.TabIndex = 1;
 			this.selectBtn.Text = "Select";
 			this.selectBtn.UseVisualStyleBackColor = true;
+			this.selectBtn.Click += new System.EventHandler(this.selectBtn_Click);
 			// 
 			// resolutionsLv
 			// 
