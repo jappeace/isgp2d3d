@@ -16,12 +16,12 @@ namespace One.Six.PyramidIndexBuffer {
 	/// </summary>
 	public class Engine : Microsoft.Xna.Framework.Game {
 		GraphicsDeviceManager graphics;
-		VertexBuffer vb;
-		IndexBuffer ib;
+		VertexBuffer vectorBuffer;
+		IndexBuffer indexBuffer;
 		BasicEffect effect;
 		float Height {get { return GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height; }}
 		float Width {get { return GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width; }}
-		float rot;
+		float rotation;
 		bool enable3D;
 		public Engine() {
 			graphics = new GraphicsDeviceManager(this);
@@ -48,10 +48,11 @@ namespace One.Six.PyramidIndexBuffer {
 				new VertexPositionColor( new Vector3(-1, -1,  1), col)
 			};
 
-			vb = new VertexBuffer(GraphicsDevice, typeof(VertexPositionColor), MAX, BufferUsage.None);
-			vb.SetData<VertexPositionColor>(vertex);
+			vectorBuffer = new VertexBuffer(GraphicsDevice, typeof(VertexPositionColor), MAX, BufferUsage.None);
+			vectorBuffer.SetData<VertexPositionColor>(vertex);
 
-			short[] index = new short[18] 
+			const int indexbufferSize = 18;
+			short[] index = new short[indexbufferSize] 
 			{ 
 				0,1,2,  // 4
 				0,4,1,  // 3
@@ -61,10 +62,10 @@ namespace One.Six.PyramidIndexBuffer {
 				0,2,3   //12
 			};
 
-			ib = new IndexBuffer(GraphicsDevice, typeof(short), 36 /*3 x 12*/, BufferUsage.None);
-			ib.SetData<short>(index);
+			indexBuffer = new IndexBuffer(GraphicsDevice, typeof(short), indexbufferSize, BufferUsage.None);
+			indexBuffer.SetData<short>(index);
 
-			GraphicsDevice.SetVertexBuffer(vb);
+			GraphicsDevice.SetVertexBuffer(vectorBuffer);
 
 			base.Initialize();
 		}
@@ -108,6 +109,12 @@ namespace One.Six.PyramidIndexBuffer {
 			if(keyboard.IsKeyDown(Keys.F2)){
 				enable3D = true;
 			}
+			if(keyboard.IsKeyDown(Keys.Down)){
+				
+			}
+			if(keyboard.IsKeyDown(Keys.Up)){
+				
+			}
 			base.Update(gameTime);
 		}
 
@@ -118,20 +125,20 @@ namespace One.Six.PyramidIndexBuffer {
 		protected override void Draw(GameTime gameTime) {
 
 			GraphicsDevice.Clear(Color.White);
-			GraphicsDevice.Indices = ib; //connect to indexbuffer
+			GraphicsDevice.Indices = indexBuffer; //connect to indexbuffer
 
 			effect.CurrentTechnique.Passes[0].Apply();
 
 			if (enable3D){
 				effect.VertexColorEnabled = true;
 				effect.World = Matrix.Identity;
-				effect.World = Matrix.CreateRotationY(MathHelper.ToRadians(rot++));
-				if (rot > 360) rot = 0;
+				effect.World = Matrix.CreateRotationY(MathHelper.ToRadians(rotation++));
+				if (rotation > 360) rotation = 0;
 				effect.View = Matrix.CreateLookAt(new Vector3(3, 3, 3), Vector3.Zero, Vector3.Up);
 				effect.Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), 1.3f, 0.1f, 10.0f);
 			}else{
 				effect.VertexColorEnabled = true;
-				effect.World = Matrix.CreateRotationY(MathHelper.ToRadians(rot++));
+				effect.World = Matrix.CreateRotationY(MathHelper.ToRadians(rotation++));
 				effect.View = new Matrix(
 					200.0f, 0.0f, 0.0f, 0.0f,
 					0.0f, 200.0f, 0.0f, 0.0f,
