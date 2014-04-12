@@ -54,7 +54,14 @@ namespace One.One
 
 		private void selectBtn_Click(object sender, EventArgs e)
 		{
-			Close();
+			if (SelectedDisplayMode != null)
+			{
+				Close();
+			}
+			else
+			{
+				MessageBox.Show("Please choose a resolution!");
+			}
 		}
 	}
 }

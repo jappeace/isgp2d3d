@@ -37,6 +37,18 @@ namespace One.One
 			var picker = new ResolutionPicker();
 			picker.ShowDialog();
 
+			// Bigger mouse means lower resolution. Useful for debugging.
+			IsMouseVisible = true;
+
+			// Set fullscreen with requested resolution.
+			graphics.IsFullScreen = true;
+			graphics.PreferredBackBufferFormat = picker.SelectedDisplayMode.Format;
+			graphics.PreferredBackBufferWidth = picker.SelectedDisplayMode.Width;
+			graphics.PreferredBackBufferHeight = picker.SelectedDisplayMode.Height;
+
+			// Apply changes.
+			graphics.ApplyChanges();
+
 			base.Initialize();
 		}
 
