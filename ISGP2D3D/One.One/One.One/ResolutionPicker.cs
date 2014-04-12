@@ -14,6 +14,7 @@ namespace One.One
 		/// Collection of all 32bit per pixel resolutions.
 		/// </summary>
 		private ICollection<DisplayMode> PermittedDisplayModes { get; set; }
+		private DisplayMode SelectedDisplayMode { get; set; }
 
 		public ResolutionPicker()
 		{
@@ -35,6 +36,19 @@ namespace One.One
 				item.SubItems.Add(new ListViewSubItem(item, res.Width.ToString()));
 				item.SubItems.Add(new ListViewSubItem(item, res.Height.ToString()));
 				resolutionsLv.Items.Add(item);
+			}
+		}
+
+		private void resolutionsLv_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (resolutionsLv.SelectedItems.Count > 0)
+			{
+				var selectedItem = resolutionsLv.SelectedItems[0];
+				SelectedDisplayMode = (DisplayMode)selectedItem.Tag;
+			}
+			else
+			{
+				SelectedDisplayMode = null;
 			}
 		}
 	}

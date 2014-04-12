@@ -53,6 +53,7 @@
 			this.resolutionsLv.TabIndex = 2;
 			this.resolutionsLv.UseCompatibleStateImageBehavior = false;
 			this.resolutionsLv.View = System.Windows.Forms.View.Details;
+			this.resolutionsLv.SelectedIndexChanged += new System.EventHandler(this.resolutionsLv_SelectedIndexChanged);
 			// 
 			// ResolutionPicker
 			// 
