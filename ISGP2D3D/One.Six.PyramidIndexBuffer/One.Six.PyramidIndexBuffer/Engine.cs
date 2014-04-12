@@ -23,6 +23,7 @@ namespace One.Six.PyramidIndexBuffer {
 		float Width {get { return GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width; }}
 		float rotation;
 		bool enable3D;
+		private Vector3 topPosition;
 		public Engine() {
 			graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
@@ -37,20 +38,8 @@ namespace One.Six.PyramidIndexBuffer {
 		protected override void Initialize() {
             effect = new BasicEffect(GraphicsDevice);
 
-			Color col = Color.DarkRed;
-			const int MAX = 5;
-			VertexPositionColor[] vertex = new VertexPositionColor[MAX]
-			{
-				new VertexPositionColor( new Vector3(0,  1, 0), col),
-				new VertexPositionColor( new Vector3(-1, -1, -1), col),
-				new VertexPositionColor( new Vector3( 1, -1, -1), col),
-				new VertexPositionColor( new Vector3( 1, -1,  1), col),
-				new VertexPositionColor( new Vector3(-1, -1,  1), col)
-			};
-
-			vectorBuffer = new VertexBuffer(GraphicsDevice, typeof(VertexPositionColor), MAX, BufferUsage.None);
-			vectorBuffer.SetData<VertexPositionColor>(vertex);
-
+			topPosition = new Vector3(0, 1, 0);
+			fillVectorBuffer();
 			const int indexbufferSize = 18;
 			short[] index = new short[indexbufferSize] 
 			{ 
@@ -65,7 +54,6 @@ namespace One.Six.PyramidIndexBuffer {
 			indexBuffer = new IndexBuffer(GraphicsDevice, typeof(short), indexbufferSize, BufferUsage.None);
 			indexBuffer.SetData<short>(index);
 
-			GraphicsDevice.SetVertexBuffer(vectorBuffer);
 
 			base.Initialize();
 		}
@@ -109,13 +97,32 @@ namespace One.Six.PyramidIndexBuffer {
 			if(keyboard.IsKeyDown(Keys.F2)){
 				enable3D = true;
 			}
+			const float speed = 0.5f;
 			if(keyboard.IsKeyDown(Keys.Down)){
-				
+				topPosition -= new Vector3(0,speed,0);
+				fillVectorBuffer();
 			}
 			if(keyboard.IsKeyDown(Keys.Up)){
-				
+				topPosition += new Vector3(0,speed,0);
+				fillVectorBuffer();
 			}
 			base.Update(gameTime);
+		}
+
+		void fillVectorBuffer(){
+			const int MAX = 5;
+			Color col = Color.DarkRed;
+			vectorBuffer = new VertexBuffer(GraphicsDevice, typeof(VertexPositionColor), MAX, BufferUsage.None);
+			VertexPositionColor[] vertex = new VertexPositionColor[MAX]
+			{
+				new VertexPositionColor( topPosition, col),
+				new VertexPositionColor( new Vector3(-1, -1, -1), col),
+				new VertexPositionColor( new Vector3( 1, -1, -1), col),
+				new VertexPositionColor( new Vector3( 1, -1,  1), col),
+				new VertexPositionColor( new Vector3(-1, -1,  1), col)
+			};
+			vectorBuffer.SetData<VertexPositionColor>(vertex);
+			GraphicsDevice.SetVertexBuffer(vectorBuffer);
 		}
 
 		/// <summary>
@@ -153,8 +160,6 @@ namespace One.Six.PyramidIndexBuffer {
 			}
 
 			GraphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, 8, 0, 12);
-			// TODO: Add your drawing code here
-
 			base.Draw(gameTime);
 		}
 	}
