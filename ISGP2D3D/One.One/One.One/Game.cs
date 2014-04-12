@@ -33,21 +33,26 @@ namespace One.One
 		/// </summary>
 		protected override void Initialize()
 		{
-			// TODO: Add your initialization logic here
 			var picker = new ResolutionPicker();
-			picker.ShowDialog();
+			if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+			{
+				// Bigger mouse means lower resolution. Useful for debugging.
+				IsMouseVisible = true;
 
-			// Bigger mouse means lower resolution. Useful for debugging.
-			IsMouseVisible = true;
+				// Set fullscreen with requested resolution.
+				graphics.IsFullScreen = true;
+				graphics.PreferredBackBufferFormat = picker.SelectedDisplayMode.Format;
+				graphics.PreferredBackBufferWidth = picker.SelectedDisplayMode.Width;
+				graphics.PreferredBackBufferHeight = picker.SelectedDisplayMode.Height;
 
-			// Set fullscreen with requested resolution.
-			graphics.IsFullScreen = true;
-			graphics.PreferredBackBufferFormat = picker.SelectedDisplayMode.Format;
-			graphics.PreferredBackBufferWidth = picker.SelectedDisplayMode.Width;
-			graphics.PreferredBackBufferHeight = picker.SelectedDisplayMode.Height;
-
-			// Apply changes.
-			graphics.ApplyChanges();
+				// Apply changes.
+				graphics.ApplyChanges();
+			}
+			else
+			{
+				// No resolution chosen. Exit.
+				Exit();
+			}
 
 			base.Initialize();
 		}

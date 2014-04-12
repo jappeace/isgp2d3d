@@ -56,11 +56,15 @@ namespace One.One
 		{
 			if (SelectedDisplayMode != null)
 			{
+				// Resolution selected. All is fine.
+				DialogResult = DialogResult.OK;
 				Close();
 			}
 			else
 			{
-				MessageBox.Show("Please choose a resolution!");
+				// Nothing selected.
+				DialogResult = DialogResult.Abort;
+				Close();
 			}
 		}
 	}
