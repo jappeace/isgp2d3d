@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One.Six.PyramidIndexBufferC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One.OneContent", "One.One\One.OneContent\One.OneContent.contentproj", "{3DE23192-FCA1-4040-BAB9-12F07F4CBC20}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One.Eight", "One.Eight\One.Eight\One.Eight.csproj", "{8CE034D2-41B9-4D08-B424-436E8DAA618F}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "One.EightContent", "One.Eight\One.EightContent\One.EightContent.contentproj", "{7CF66E09-2B52-435E-809D-AD77BF99FEB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -37,6 +41,12 @@ Global
 		{C5C09F1A-9E06-472C-AA89-A50890BC5E08}.Release|x86.ActiveCfg = Release|x86
 		{3DE23192-FCA1-4040-BAB9-12F07F4CBC20}.Debug|x86.ActiveCfg = Debug|x86
 		{3DE23192-FCA1-4040-BAB9-12F07F4CBC20}.Release|x86.ActiveCfg = Release|x86
+		{8CE034D2-41B9-4D08-B424-436E8DAA618F}.Debug|x86.ActiveCfg = Debug|x86
+		{8CE034D2-41B9-4D08-B424-436E8DAA618F}.Debug|x86.Build.0 = Debug|x86
+		{8CE034D2-41B9-4D08-B424-436E8DAA618F}.Release|x86.ActiveCfg = Release|x86
+		{8CE034D2-41B9-4D08-B424-436E8DAA618F}.Release|x86.Build.0 = Release|x86
+		{7CF66E09-2B52-435E-809D-AD77BF99FEB0}.Debug|x86.ActiveCfg = Debug|x86
+		{7CF66E09-2B52-435E-809D-AD77BF99FEB0}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
