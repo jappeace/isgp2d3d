@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,11 +11,13 @@ namespace One.Eight
 	/// </summary>
 	public class Game : Microsoft.Xna.Framework.Game
 	{
+		const int CircleRadius = 10;
+		const int CirclePoints = 18;
+
 		GraphicsDeviceManager graphics;
 		List<VertexPositionColor> vertex;
 		VertexBuffer vb;
 		BasicEffect effect;
-
 
 		public Game()
 		{
@@ -32,7 +35,29 @@ namespace One.Eight
 		/// </summary>
 		protected override void Initialize()
 		{
+			effect = new BasicEffect(GraphicsDevice);
 			base.Initialize();
+		}
+
+		private void CircleInitialize(int mouseX, int mouseY)
+		{
+			vertex = new List<VertexPositionColor>();
+			for (int i = 0; i < CirclePoints; i++)
+			{
+				double radian = 2 * Math.PI / CirclePoints * i;
+				int x = (int)(Math.Cos(radian) * CircleRadius)
+					+ mouseX - CircleRadius / 2;
+				int y = (int)(Math.Sin(radian) * CircleRadius)
+					+ mouseY - CircleRadius / 2;
+				vertex.Add(new VertexPositionColor(new Vector3(x, y, 0), Color.Red));
+			}
+
+			vb = new VertexBuffer(
+				GraphicsDevice,
+				typeof(VertexPositionColor),
+				vertex.Count,
+				BufferUsage.None
+			);
 		}
 
 		/// <summary>
@@ -77,7 +102,7 @@ namespace One.Eight
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Draw(GameTime gameTime)
 		{
-			GraphicsDevice.Clear(Color.CornflowerBlue);
+			GraphicsDevice.Clear(Color.White);
 
 			// TODO: Add your drawing code here
 
