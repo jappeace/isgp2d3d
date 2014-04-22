@@ -15,16 +15,16 @@ namespace One.Eight
 		const int CirclePoints = 18;
 
 		GraphicsDeviceManager graphics;
-		List<VertexPositionColor> vertex;
+		VertexPositionColor[] vertex;
 		VertexBuffer vb;
 		BasicEffect effect;
+		bool canDraw = false;
 
 		public Game()
 		{
 			graphics = new GraphicsDeviceManager(this);
 			IsMouseVisible = true;
 			Content.RootDirectory = "Content";
-			vertex = new List<VertexPositionColor>();
 		}
 
 		/// <summary>
@@ -41,7 +41,7 @@ namespace One.Eight
 
 		private void CircleInitialize(int mouseX, int mouseY)
 		{
-			vertex = new List<VertexPositionColor>();
+			vertex = new VertexPositionColor[CirclePoints];
 			for (int i = 0; i < CirclePoints; i++)
 			{
 				double radian = 2 * Math.PI / CirclePoints * i;
@@ -49,18 +49,19 @@ namespace One.Eight
 					+ mouseX - CircleRadius / 2;
 				int y = (int)(Math.Sin(radian) * CircleRadius)
 					+ mouseY - CircleRadius / 2;
-				vertex.Add(new VertexPositionColor(new Vector3(x, y, 0), Color.Red));
+				vertex[i] = new VertexPositionColor(new Vector3(x, y, 0), Color.Red);
 			}
 
 			vb = new VertexBuffer(
 				GraphicsDevice,
 				typeof(VertexPositionColor),
-				vertex.Count,
+				vertex.Length,
 				BufferUsage.None
 			);
 
-			vb.SetData(vertex.ToArray());
+			vb.SetData(vertex);
 			GraphicsDevice.SetVertexBuffer(vb);
+			canDraw = true;
 		}
 
 		/// <summary>
@@ -124,10 +125,10 @@ namespace One.Eight
 				-10f, 10f
 			);
 			#endregion
-			if (vertex.Count > 0)
+			if (canDraw)
 			{
 				effect.CurrentTechnique.Passes[0].Apply();
-				GraphicsDevice.DrawPrimitives(PrimitiveType.LineStrip, 0, vertex.Count);
+				GraphicsDevice.DrawPrimitives(PrimitiveType.LineStrip, 0, CirclePoints);
 			}
 			base.Draw(gameTime);
 		}
