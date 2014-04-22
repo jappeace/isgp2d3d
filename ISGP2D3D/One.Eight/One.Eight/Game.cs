@@ -58,6 +58,9 @@ namespace One.Eight
 				vertex.Count,
 				BufferUsage.None
 			);
+
+			vb.SetData(vertex.ToArray());
+			GraphicsDevice.SetVertexBuffer(vb);
 		}
 
 		/// <summary>
@@ -91,7 +94,10 @@ namespace One.Eight
 				this.Exit();
 			}
 
-			// TODO: Add your update logic here
+			if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+			{
+				CircleInitialize(Mouse.GetState().X, Mouse.GetState().Y);
+			}
 
 			base.Update(gameTime);
 		}
@@ -103,8 +109,6 @@ namespace One.Eight
 		protected override void Draw(GameTime gameTime)
 		{
 			GraphicsDevice.Clear(Color.White);
-
-			// TODO: Add your drawing code here
 
 			base.Draw(gameTime);
 		}
