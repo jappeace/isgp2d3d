@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -10,11 +11,17 @@ namespace One.Eight
 	public class Game : Microsoft.Xna.Framework.Game
 	{
 		GraphicsDeviceManager graphics;
+		List<VertexPositionColor> vertex;
+		VertexBuffer vb;
+		BasicEffect effect;
+
 
 		public Game()
 		{
 			graphics = new GraphicsDeviceManager(this);
+			IsMouseVisible = true;
 			Content.RootDirectory = "Content";
+			vertex = new List<VertexPositionColor>();
 		}
 
 		/// <summary>
@@ -25,8 +32,6 @@ namespace One.Eight
 		/// </summary>
 		protected override void Initialize()
 		{
-			// TODO: Add your initialization logic here
-
 			base.Initialize();
 		}
 
