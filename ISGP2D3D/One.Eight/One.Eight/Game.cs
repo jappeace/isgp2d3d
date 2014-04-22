@@ -41,14 +41,14 @@ namespace One.Eight
 
 		private void CircleInitialize(int mouseX, int mouseY)
 		{
-			vertex = new VertexPositionColor[CirclePoints];
-			for (int i = 0; i < CirclePoints; i++)
+			vertex = new VertexPositionColor[CirclePoints + 1];
+			for (int i = 0; i < CirclePoints + 1; i++)
 			{
 				double radian = 2 * Math.PI / CirclePoints * i;
 				int x = (int)(Math.Cos(radian) * CircleRadius)
-					+ mouseX - CircleRadius / 2;
+					+ mouseX;
 				int y = (int)(Math.Sin(radian) * CircleRadius)
-					+ mouseY - CircleRadius / 2;
+					+ mouseY;
 				vertex[i] = new VertexPositionColor(new Vector3(x, y, 0), Color.Red);
 			}
 
