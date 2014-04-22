@@ -109,7 +109,26 @@ namespace One.Eight
 		protected override void Draw(GameTime gameTime)
 		{
 			GraphicsDevice.Clear(Color.White);
-
+			#region Transform
+			effect.VertexColorEnabled = true;
+			effect.World = Matrix.Identity;
+			effect.View = new Matrix(
+				1.0f, 0.0f, 0.0f, 0.0f,
+				0.0f, 1.0f, 0.0f, 0.0f,
+				0.0f, 0.0f, -1.0f, 0.0f,
+				0.0f, 0.0f, 0.0f, 1.0f
+			);
+			effect.Projection = Matrix.CreateOrthographicOffCenter(
+				0f, Window.ClientBounds.Width,
+				Window.ClientBounds.Height, 0f,
+				-10f, 10f
+			);
+			#endregion
+			if (vertex.Count > 0)
+			{
+				effect.CurrentTechnique.Passes[0].Apply();
+				GraphicsDevice.DrawPrimitives(PrimitiveType.LineStrip, 0, vertex.Count);
+			}
 			base.Draw(gameTime);
 		}
 	}
