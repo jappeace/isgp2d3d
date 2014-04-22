@@ -48,7 +48,7 @@ namespace One.Eight
 					+ mouseX;
 				int y = (int)(Math.Sin(radian) * CircleRadius)
 					+ mouseY;
-				vertex[i] = new VertexPositionColor(new Vector3(x, y, 0), Color.Red);
+				vertex[i] = new VertexPositionColor(new Vector3(x, y, 0), Color.Black);
 			}
 
 			vb = new VertexBuffer(
